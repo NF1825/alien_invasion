@@ -41,7 +41,7 @@ class AlienInvasion:
 
 
 
-    def _check_keydown_events(selfself, event):
+    def _check_keydown_events(self, event):
         """Respond to keypresses."""
         if event.key == pygame.K_RIGHT:
             # Move the ship to the right.
@@ -57,7 +57,7 @@ class AlienInvasion:
         elif event.key == pygame.K_LEFT:
             self.ship.moving_left = False
 
-            
+
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen."""
         # Redraw the screen during each pass through the loop.

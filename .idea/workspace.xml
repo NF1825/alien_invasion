@@ -5,7 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="144d2ef5-b987-4757-adfe-ea4b55c7802f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Homework/Better_Stars.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Homework/Game_Character.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Homework/Keys.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Homework/Raindrops.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Homework/Rocket.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Homework/Sideways_Shooter.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Homework/Stars.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Homework/f14.bmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blue_sky.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/blue_sky.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +48,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\m251650\Documents\GitHub\alien_invasion\Homework" />
       <recent name="C:\Users\m251650\Documents\GitHub\alien_invasion\images" />
     </key>
   </component>

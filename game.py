@@ -4,10 +4,12 @@ from time import sleep
 import pygame
 from settings import Settings
 from game_stats import GameStats
+from scoreboard import Scoreboard
 from button import Button
 from ship import Ship
 from bullet import Bullet
 from alien import Alien
+
 
 
 
@@ -28,12 +30,15 @@ class AlienInvasion:
 
         #create an instance to store game statistics.
         self.stats = GameStats(self)
+        #create a scoreboard instance
+        self.sb = Scoreboard(self)
 
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
         self.aliens = pygame.sprite.Group()
 
         self._create_fleet()
+        self.settings.increase_speed()
 
         # make the play button.
         self.play_button = Button(self, "Play")
@@ -76,8 +81,10 @@ class AlienInvasion:
         button_clicked = self.play_button.rect.collidepoint(mouse_pos)
         if button_clicked and not self.stats.game_active:
             #reset the game stats
+            self.settings.initialize_dynamic_settings()
             self.stats.reset_stats()
             self.stats.game_active = True
+            self.sb.prep_score()
 
             # Get rid of any remaining aliens and bullets.
             self.aliens.empty()
@@ -146,11 +153,16 @@ class AlienInvasion:
         else:
             self.stats.game_active = False
             pygame.mouse.set_visible(True)
-            
+
     def _check_bullet_alien_collisions(self):
         #check if bullets have hit aliens
         # get rid of the bullet and alien if so
         collisions = pygame.sprite.groupcollide(self.bullets, self.aliens, True, True)
+
+        if collisions:
+            for aliens in collisions.values():
+                self.stats.score += self.settings.alien_points + len(aliens)
+            self.sb.prep_score()
 
         if not self.aliens:
             #Destroy existing bullets and create new fleet.
@@ -233,6 +245,9 @@ class AlienInvasion:
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
         self.aliens.draw(self.screen)
+
+        #draw the score information.
+        self.sb.show_score()
 
         # draw the play button if the game is inactive.
         if not self.stats.game_active:

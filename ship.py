@@ -1,5 +1,5 @@
 import pygame
-import pygame.sprite import Sprite
+from pygame.sprite import Sprite
 
 class Ship(Sprite):
     """A class to manage the ship."""

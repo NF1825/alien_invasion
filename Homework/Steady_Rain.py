@@ -1,7 +1,7 @@
 import pygame
 import sys
+import time
 from pygame.sprite import Sprite
-from random import randint
 
 class Star(Sprite):
 
@@ -10,13 +10,17 @@ class Star(Sprite):
         self.screen = ev_game.screen
 
 
-        self.image = pygame.image.load("Gold_Star4.bmp")
+        self.image = pygame.image.load("raindrop.bmp")
         self.rect = self.image.get_rect()
         self.rect.x = self.rect.width
         self.rect.y = self.rect.height
 
 
         self.x = float(self.rect.x)
+        self.y = float(self.rect.y)
+        def update(self):
+            self.y += .5
+            self.rect.y = self.y
 
 
 
@@ -38,16 +42,13 @@ class Environment:
         available_space_y = 600 - (2 * star_height)
         number_stars_x = available_space_x // (2 * star_width)
         number_rows = available_space_y // (2 * star_height)
-        for rows in range(0, number_rows):
+        for rows in range(0,number_rows):
             for star_number in range(number_stars_x):
                 star = Star(self)
-                star.x = star_width + 2*randint(star_width,available_space_x)
+                star.x = star_width + 2*star_width*star_number
                 star.rect.x = star.x
-                star.rect.y = star_height + 2 + randint(star_height,available_space_y)
+                star.rect.y = star_height + 2 * star.rect.height * rows
                 self.stars.add(star)
-
-
-
 
 
     def _check_events(self):
@@ -61,10 +62,16 @@ class Environment:
 
         pygame.display.flip()
 
+    def update_stars(self):
+        for star in self.stars.sprites():
+            star.rect.y += 1
+
     def run_game(self):
         while True:
             self._check_events()
             self._update_screen()
+            self.update_stars()
+
 
 
 ev = Environment()

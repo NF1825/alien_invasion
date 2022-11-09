@@ -32,13 +32,18 @@ class Environment:
         star = Star(self)
         self.stars.add(star)
         star_width = star.rect.width
+        star_height = star.rect.height
         available_space_x = 1200 - (2 * star_width)
+        available_space_y = 600 - (2 * star_height)
         number_stars_x = available_space_x // (2 * star_width)
-        for star_number in range(number_stars_x):
-            star = Star(self)
-            star.x = star_width + 2*star_width*star_number
-            star.rect.x = star.x
-            self.stars.add(star)
+        number_rows = available_space_y // (2 * star_height)
+        for rows in range(0,number_rows):
+            for star_number in range(number_stars_x):
+                star = Star(self)
+                star.x = star_width + 2*star_width*star_number
+                star.rect.x = star.x
+                star.rect.y = star_height + 2 * star.rect.height * rows
+                self.stars.add(star)
 
 
     def _check_events(self):
